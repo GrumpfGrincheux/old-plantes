@@ -1,0 +1,45 @@
+html {
+	box-sizing: border-box;
+	font-family: "Open Sans", sans-serif;
+	font-size: 125%;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	font-family: inherit;
+	font-size: inherit;
+}
+table,
+tbody,
+tr,
+th,
+td {
+	border-collapse: collapse;
+	padding: 0;
+	border: none;
+	margin: 0;
+}
+#plantes-table {
+	display: inline-block;
+	border: solid red 2px;
+}
+.plante-entry {
+	padding: 10px;
+	border: solid black 1px;
+}
+#planteForm {
+	display: grid;
+	width: 50%;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+}
+#planteForm input {
+	border-collapse: separate;
+	padding: 5px;
+	border: solid black 1px;
+	margin: 5px;
+}
+#planteSubmit {
+	grid-column: span 2;
+}
