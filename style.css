@@ -10,6 +10,10 @@ html {
 	font-family: inherit;
 	font-size: inherit;
 }
+
+section {
+	width: fit-content;
+}
 table,
 tbody,
 tr,
@@ -28,9 +32,13 @@ td {
 	padding: 10px;
 	border: solid black 1px;
 }
+.plante-theader {
+	padding: 10px;
+	border: solid black 1px;
+}
 #planteForm {
 	display: grid;
-	width: 50%;
+	width: 100%;
 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr;
 }
@@ -42,4 +50,19 @@ td {
 }
 #planteSubmit {
 	grid-column: span 2;
+}
+.delete-plante-button {
+	visibility: hidden;
+}
+.input-id {
+	display: none;
+}
+
+tr:hover > .delete-plante-button {
+	visibility: visible;
+}
+.alert {
+	z-index: 10;
+	height: 50%;
+	width: 50%;
 }
