@@ -140,7 +140,8 @@ function getPlantes() {
 	xhr.send();
 }
 const planteForm = document.getElementById("planteForm");
-planteForm.addEventListener("submit", getPlantes);
+const plantSubmitButton = document.getElementById("planteSubmit");
+plantSubmitButton.addEventListener("click", getPlantes);
 window.onload = getPlantes;
 
 //       *******  POST PLANTE FUNCTION ********
@@ -161,16 +162,17 @@ planteForm.addEventListener("submit", function (e) {
 });
 
 //      ***********  DELETE PLANTE FUNCTION **********
-function onSubmitDeletePlante(e) {
+function onSubmitDeletePlante(i) {
 	const xhr = new XMLHttpRequest();
-	xhr.open("GET", `/plantes/php/delete_plante.php`, true);
+	xhr.open("POST", `/plantes/php/delete_plante.php`, true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.onload = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			console.log("Status: The plant has been deleted.");
-			console.log(`response = ${xhr.response}`);
+			console.log("response =", xhr.response);
 		} else if (xhr.readyState === 4) {
 			console.log("Error occured");
 		}
 	};
-	xhr.send();
+	xhr.send(`id=${i}`);
 }

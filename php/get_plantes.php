@@ -15,12 +15,12 @@ $i = 1;
 foreach ($result as $row) {
   echo '
     <tr>
-        <td class="plante-entry">'.$row['id'].'</td>
-        <td class="plante-entry">'.$row["nom"].'</td>
-        <td class="plante-entry">'.$row["genre"].'</td>
-        <td class="plante-entry">'.$row["espece"].'</td>
-        <td class="plante-entry">'.$row["famille"].'</td>
-        <td class="delete-plante-button"><input onsubmit="onSubmitDeletePlante('.$i.')" id="delete-plante-button" type="submit" value="Supprimer Ligne"></td>
+        <td class="plante-entry line-'.$i.'">'.$row['id'].'</td>
+        <td class="plante-entry line-'.$i.'">'.$row["nom"].'</td>
+        <td class="plante-entry line-'.$i.'">'.$row["genre"].'</td>
+        <td class="plante-entry line-'.$i.'">'.$row["espece"].'</td>
+        <td class="plante-entry line-'.$i.'">'.$row["famille"].'</td>
+        <td class="delete-plante-button line-'.$i.'"><form onsubmit="onSubmitDeletePlante('.$i.')"><input id="delete-plante-button" type="submit" value="Supprimer Ligne"></form></td>
     </tr>';
     ++$i;
 }
