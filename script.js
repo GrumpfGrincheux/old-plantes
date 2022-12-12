@@ -41,4 +41,5 @@ function onClickClearDatabase() {
 		}
 	};
 	xhr.send();
+	location.reload();
 }

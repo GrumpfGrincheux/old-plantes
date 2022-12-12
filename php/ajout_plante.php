@@ -9,7 +9,7 @@ $genre = $plante["genre"];
 $espece = $plante["espece"];
 $famille = $plante["famille"];
 
-$is_famille = $mysqli->query("SELECT id FROM familles WHERE famille = '$famille'");
+$is_famille = $mysqli->query("SELECT * FROM familles WHERE famille = '$famille'");
 if ($is_famille->num_rows == 1) {
   $row = $is_famille->fetch_assoc();
   $famille_id = $row["id"];

@@ -2,11 +2,11 @@
 
 $mysqli = new mysqli("localhost", "root", "root", "plantes");
 $plantes = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.espece, familles.famille 
-                              FROM plantes
-                              INNER JOIN genres ON plantes.genre_id = genres.id
-                              INNER JOIN especes ON plantes.espece_id = especes.id
-                              INNER JOIN familles ON plantes.famille_id = familles.id
-                              ORDER BY plantes.id");
+                            FROM plantes
+                            INNER JOIN genres ON plantes.genre_id = genres.id
+                            INNER JOIN especes ON plantes.espece_id = especes.id
+                            INNER JOIN familles ON plantes.famille_id = familles.id
+                            ORDER BY plantes.id");
 
 echo '
     <tr>
@@ -15,7 +15,6 @@ echo '
       <th class="plante-theader">Genre</th>
       <th class="plante-theader">Espèce</th>
       <th class="plante-theader">Famille</th>
-      <th></th>
     </tr>';
 
 foreach ($plantes as $plantes_row) {
