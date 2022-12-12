@@ -16,7 +16,8 @@ const planteSubmitButton = document.getElementById("planteSubmit");
 planteSubmitButton.addEventListener("click", getPlantes);
 window.onload = getPlantes;
 
-planteSubmitButton.addEventListener("click", function () {
+planteSubmitButton.addEventListener("click", function (e) {
+	e.preventDefault();
 	const data = new FormData(planteForm);
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/plantes/php/ajout_plante.php", true);
