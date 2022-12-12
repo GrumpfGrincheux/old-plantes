@@ -13,17 +13,16 @@ function getPlantes() {
 }
 
 const planteSubmitButton = document.getElementById("planteSubmit");
-// planteSubmitButton.addEventListener("click", getPlantes);
+planteSubmitButton.addEventListener("click", getPlantes);
 window.onload = getPlantes;
 
-planteSubmitButton.addEventListener("click", function (e) {
-	e.preventDefault();
+planteSubmitButton.addEventListener("click", function () {
 	const data = new FormData(planteForm);
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/plantes/php/ajout_plante.php", true);
 	xhr.onload = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
-			console.log("Status: The plant has been added to the database.");
+			console.log(xhr.responseText);
 		} else if (xhr.readyState === 4) {
 			console.log("Error occured");
 		}
