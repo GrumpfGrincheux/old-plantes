@@ -1,5 +1,7 @@
 <?php 
 
+  $msqli = new mysqli("localhost", "root", "root", "plantes");
+
   $plante = $_POST;
 
   $nom = $plante["nom"];
@@ -7,11 +9,7 @@
   $espece = $plante["espece"];
   $famille = $plante["famille"];
 
-  $famille_sql = "INSERT INTO familles(famille) VALUES ('$famille')";
-
-  
-  $msqli = new mysqli("localhost", "root", "root", "plantes");
-  
+  $famille_sql = "INSERT INTO familles(famille) VALUES ('$famille')";  
   $res_famille = $msqli -> query($famille_sql);
 
   if ($res_famille) {

@@ -7,13 +7,6 @@
                               INNER JOIN especes ON plantes.espece_id = especes.id
                               INNER JOIN familles ON plantes.famille_id = familles.id");
 
-  // foreach ($plantes as $plantes_row)
-    // $nom = $plantes_row["nom"];
-    // $genre_id = $plantes_row["genre_id"];
-    // $espece_id = $plantes_row["espece_id"];
-    // $famille_id = $plantes_row["famille_id"];
-    // $plante_id = $plantes_row["id"];
-
   echo '
     <tr>
       <th class="plante-theader">ID</th>
@@ -28,12 +21,11 @@
   foreach ($plantes as $plantes_row) {
     echo '
       <tr>
-          <td class="plante-entry line-'.$i.'">'.$plantes_row["id"].'</td>
-          <td class="plante-entry line-'.$i.'">'.$plantes_row["nom"].'</td>
-          <td class="plante-entry line-'.$i.'">'.$plantes_row["genre"].'</td>
-          <td class="plante-entry line-'.$i.'">'.$plantes_row["espece"].'</td>
-          <td class="plante-entry line-'.$i.'">'.$plantes_row["famille"].'</td>
-          <td class="delete-plante-button line-'.$plantes_row["id"].'"><form onsubmit="onSubmitDeletePlante('.$plantes_row["id"].')"><input id="delete-plante-button" type="submit" value="Supprimer Ligne"></form></td>
+        <td class="plante-entry line-'.$i.'">'.$plantes_row["id"].'</td>
+        <td class="plante-entry line-'.$i.'">'.$plantes_row["nom"].'</td>
+        <td class="plante-entry line-'.$i.'">'.$plantes_row["genre"].'</td>
+        <td class="plante-entry line-'.$i.'">'.$plantes_row["espece"].'</td>
+        <td class="plante-entry line-'.$i.'">'.$plantes_row["famille"].'</td>
       </tr>';
     ++$i;
   }
