@@ -10,17 +10,15 @@ function getPlantes() {
 		}
 	};
 	xhr.send();
-	setTimeout(() => {
-		planteIdIncrement();
-	}, 100);
 }
-const planteForm = document.getElementById("planteForm");
-const plantSubmitButton = document.getElementById("planteSubmit");
-plantSubmitButton.addEventListener("click", getPlantes);
+
+const planteSubmitButton = document.getElementById("planteSubmit");
+// planteSubmitButton.addEventListener("click", getPlantes);
 window.onload = getPlantes;
 
-planteForm.addEventListener("submit", function postPlante() {
-	// e.preventDefault();
+planteSubmitButton.addEventListener("click", function (e) {
+	e.preventDefault();
+	e.stopPropagation();
 	const data = new FormData(planteForm);
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/plantes/php/ajout_plante.php", true);
@@ -33,13 +31,6 @@ planteForm.addEventListener("submit", function postPlante() {
 	};
 	xhr.send(data);
 });
-
-function planteIdIncrement() {
-	const plantLines = document.getElementsByClassName("plante-entry").length / 5;
-	const planteIdInput = document.querySelector("#input-id");
-	planteIdInput.value = plantLines + 1;
-	return plantLines;
-}
 
 function onSubmitDeletePlante(i) {
 	const xhr = new XMLHttpRequest();
