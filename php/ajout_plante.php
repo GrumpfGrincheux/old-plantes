@@ -10,24 +10,24 @@
   $famille_sql = "INSERT INTO familles(famille) VALUES ('$famille')";
 
   
-  $plantes = new mysqli("localhost", "root", "root", "plantes");
+  $msqli = new mysqli("localhost", "root", "root", "plantes");
   
-  $res_famille = $plantes -> query($famille_sql);
+  $res_famille = $msqli -> query($famille_sql);
 
   if ($res_famille) {
-    $famille_id = $plantes -> insert_id;
+    $famille_id = $msqli -> insert_id;
     $genre_sql = "INSERT INTO genres(genre, famille_id) VALUES ('$genre', '$famille_id')";
-    $res_genre = $plantes -> query($genre_sql);
+    $res_genre = $msqli -> query($genre_sql);
 
     if ($res_genre) {
-      $genre_id = $plantes -> insert_id;
+      $genre_id = $msqli -> insert_id;
       $espece_sql = "INSERT INTO especes(espece, genre_id, famille_id) VALUES ('$espece', '$genre_id', '$famille_id')";
-      $res_espece = $plantes -> query($espece_sql);
+      $res_espece = $msqli -> query($espece_sql);
 
       if ($res_espece) {
-        $espece_id = $plantes -> insert_id;
+        $espece_id = $msqli -> insert_id;
         $nom_sql = "INSERT INTO plantes(nom, espece_id, genre_id, famille_id) VALUES ('$nom', '$espece_id', '$genre_id', '$famille_id')";
-        $res_plante = $plantes -> query($nom_sql);
+        $res_plante = $msqli -> query($nom_sql);
       }
     }
   }
