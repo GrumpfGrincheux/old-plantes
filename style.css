@@ -24,18 +24,6 @@ td {
 	border: none;
 	margin: 0;
 }
-#plantes-table {
-	display: inline-block;
-	border: solid red 2px;
-}
-.plante-entry {
-	padding: 10px;
-	border: solid black 1px;
-}
-.plante-theader {
-	padding: 10px;
-	border: solid black 1px;
-}
 #planteForm {
 	display: grid;
 	width: 100%;
@@ -50,16 +38,6 @@ td {
 }
 #planteSubmit {
 	grid-column: span 2;
-}
-.delete-plante-button {
-	visibility: hidden;
-}
-.input-id {
-	display: none;
-}
-
-tr:hover > .delete-plante-button {
-	visibility: visible;
 }
 .alert {
 	z-index: 10;

@@ -2,6 +2,7 @@
 
 $mysqli = new mysqli("localhost", "root", "root", "plantes");
 
+$variete = $_POST["variete"];
 $nom = $_POST["nom"];
 $genre = $_POST["genre"];
 $espece = $_POST["espece"];
@@ -38,3 +39,6 @@ $is_plante = $mysqli->query("SELECT * FROM plantes WHERE nom = '$nom' AND espece
 $plante_sql = "INSERT INTO plantes(nom, genre_id, espece_id, famille_id) VALUES ('$nom', '$genre_id', '$espece_id', '$famille_id')";
 $plante_id = exists($is_plante, $plante_sql, $mysqli);
 
+$is_variete = $mysqli->query("SELECT * FROM varietes WHERE variete = '$variete' AND plant_id = '$plante_id' AND espece_id = '$espece_id' AND famille_id = '$famille_id' AND genre_id = '$genre_id'");
+$variete_sql = "INSERT INTO varietes(variete, genre_id, espece_id, famille_id) VALUES ('$variete', '$genre_id', '$espece_id', '$famille_id')";
+$variete_id = exists($is_variete, $variete_sql, $mysqli);

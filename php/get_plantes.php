@@ -1,7 +1,7 @@
 <?php
 
 $mysqli = new mysqli("localhost", "root", "root", "plantes");
-$plantes = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.espece, familles.famille 
+$plantes = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.espece, familles.famille
                             FROM plantes
                             INNER JOIN genres ON plantes.genre_id = genres.id
                             INNER JOIN especes ON plantes.espece_id = especes.id
