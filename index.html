@@ -11,13 +11,16 @@
 	<body>
 		<main>
 			<section>
-				<h2>Plantes CRUD (in progress)</h2>
+				<h2>Plantes CRUD</h2>
 				<div id="plantes-table">
 					<table>
 						<tbody id="plantes-tbody"></tbody>
 					</table>
 				</div>
 				<form id="planteForm">
+					<label for="variete">Variété</label>
+					<input name="variete" id="variete" type="text" />
+
 					<label for="nom">Nom</label>
 					<input name="nom" id="nom" type="text" />
 
@@ -35,6 +38,7 @@
 				<button onclick="onClickClearDatabase()">
 					Vider la base de données
 				</button>
+				<button onclick="onClickCreateDatabase()">HAHA ?</button>
 			</section>
 		</main>
 	</body>

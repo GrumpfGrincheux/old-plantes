@@ -1,6 +1,6 @@
 function getPlantes() {
 	const xhr = new XMLHttpRequest();
-	xhr.open("GET", "/plantes/php/get_plantes.php", true);
+	xhr.open("GET", "/plantes/php/get_plantes_better.php", true);
 	const receiver = document.getElementById("plantes-tbody");
 	xhr.onload = () => {
 		if (xhr.status == 200 && xhr.readyState === 4) {
