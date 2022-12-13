@@ -31,6 +31,9 @@ nav a {
 }
 
 main {
+	position: relative;
 	background-color: #1fbd1f54;
-	margin-top: 51px;
+	margin-top: 60px;
+	height: 100vh;
+	width: 100%;
 }
