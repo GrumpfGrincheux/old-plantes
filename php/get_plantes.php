@@ -30,7 +30,6 @@ foreach ($plantes as $plantes_row) {
         <td class="plante-entry">' . $plantes_row["espece"] . '</td>
         <td class="plante-entry">' . $plantes_row["famille"] . '</td>
         <td class="side-pannel">
-          <form onsubmit="onSubmitDeletePlante('.$plantes_row["id"].')"><input id="delete-plante-button" type="submit" value="Supprimer"></form>
           <button onclick="">Modifier</button>
         </td>
       </tr>';

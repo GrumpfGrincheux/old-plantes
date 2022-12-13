@@ -1,0 +1,53 @@
+section {
+	width: fit-content;
+}
+table,
+tbody,
+tr,
+th,
+td {
+	border-collapse: collapse;
+	padding: 0;
+	border: none;
+	margin: 0;
+}
+th {
+	border: 2px solid black;
+	padding: 10px;
+}
+td {
+	border: 1px solid black;
+	padding: 10px;
+}
+.side-pannel {
+	visibility: hidden;
+}
+.plante-tr:hover {
+	background-color: rgba(163, 57, 57, 0.432);
+}
+.plante-tr:hover .side-pannel {
+	visibility: visible;
+}
+.empty-theader {
+	border: none;
+}
+#planteForm {
+	display: grid;
+	width: 100%;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+}
+#planteForm input {
+	border-collapse: separate;
+	padding: 5px;
+	border: solid black 1px;
+	margin: 5px;
+}
+#planteSubmit {
+	grid-column: span 2;
+}
+.alert {
+	z-index: 10;
+	height: 50%;
+	width: 50%;
+}

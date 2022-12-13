@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<link rel="stylesheet" href="/pages/plantes/styles/plante_style.css" />
 		<link rel="stylesheet" href="/pages/plantes/styles/style.css" />
 		<script src="/pages/plantes/javascript/search_plante.js" defer></script>
 		<meta charset="UTF-8" />
@@ -9,23 +10,15 @@
 		<title>Chercher Plante</title>
 	</head>
 	<body>
+		<nav>
+			<div class="nav-link">
+				<a href="/pages/plantes/index.html">Index</a>
+			</div>
+			<div class="nav-link">
+				<a href="/pages/plantes/ajout_plante.html">Ajouter une plante</a>
+			</div>
+		</nav>
 		<main>
-			<style>
-				li {
-					list-style: none;
-					font-size: 2rem;
-					padding: 10px;
-				}
-			</style>
-			<ul>
-				<li>
-					<a href="/pages/plantes/index.html">Index</a>
-				</li>
-				<li>
-					<a href="/pages/plantes/ajout_plante.html">Ajouter une plante</a>
-				</li>
-			</ul>
-
 			<section>
 				<h2>Chercher une ou des plantes</h2>
 				<div id="plantes-table">
@@ -74,7 +67,4 @@
 			</section>
 		</main>
 	</body>
-</html>
-
-<button onclick="">Supprimer</button>
-<button on>Modifier</button>
+</html
