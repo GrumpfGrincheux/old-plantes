@@ -12,6 +12,6 @@ function controlInputs(inputName) {
 				console.log("Error occured");
 			}
 		};
-		xhr.send(``);
+		xhr.send(`val=${value}`);
 	});
 }

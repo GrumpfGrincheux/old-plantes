@@ -2,10 +2,7 @@
 
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');
 
-foreach($_POST as $row) {
-  print_r($row);
-}
-
+print_r($_POST["val"]);
 exit;
 
 $result = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete 
