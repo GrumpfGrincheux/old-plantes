@@ -10,7 +10,7 @@ $famille = $_POST["famille"];
 
 function exists($data, $sql, $mysqli)
 {
-  if ($data->num_rows == 1) {
+  if ($data->num_rows >= 1) {
     while ($row = $data->fetch_assoc()) {
       $id = $row["id"];
       print_r("~ Cette entrée existe déja ! ~");
@@ -39,6 +39,6 @@ $is_plante = $mysqli->query("SELECT * FROM plantes WHERE nom = '$nom' AND espece
 $plante_sql = "INSERT INTO plantes(nom, genre_id, espece_id, famille_id) VALUES ('$nom', '$genre_id', '$espece_id', '$famille_id')";
 $plante_id = exists($is_plante, $plante_sql, $mysqli);
 
-$is_variete = $mysqli->query("SELECT * FROM varietes WHERE variete = '$variete' AND plant_id = '$plante_id' AND espece_id = '$espece_id' AND famille_id = '$famille_id' AND genre_id = '$genre_id'");
-$variete_sql = "INSERT INTO varietes(variete, genre_id, espece_id, famille_id) VALUES ('$variete', '$genre_id', '$espece_id', '$famille_id')";
+$is_variete = $mysqli->query("SELECT * FROM varietes WHERE variete = '$variete' AND plante_id = '$plante_id' AND espece_id = '$espece_id' AND famille_id = '$famille_id' AND genre_id = '$genre_id'");
+$variete_sql = "INSERT INTO varietes(variete, plante_id, genre_id, espece_id, famille_id) VALUES ('$variete', '$plante_id', '$genre_id', '$espece_id', '$famille_id')";
 $variete_id = exists($is_variete, $variete_sql, $mysqli);

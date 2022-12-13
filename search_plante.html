@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="/pages/plantes/styles/style.css" />
+		<script src="/pages/plantes/javascript/search_plante.js" defer></script>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Chercher Plante</title>
+	</head>
+	<body>
+		<main>
+			<style>
+				li {
+					list-style: none;
+					font-size: 2rem;
+					padding: 10px;
+				}
+			</style>
+			<ul>
+				<li>
+					<a href="/pages/plantes/index.html">Index</a>
+				</li>
+				<li>
+					<a href="/pages/plantes/ajout_plante.html">Ajouter une plante</a>
+				</li>
+			</ul>
+
+			<section>
+				<h2>Chercher une ou des plantes</h2>
+				<div id="plantes-table">
+					<table>
+						<tbody id="plantes-tbody"></tbody>
+					</table>
+				</div>
+				<form onchange="getPlantes()" id="planteForm">
+					<label for="variete">Variété</label>
+					<input
+						onchange="getPlantes()"
+						name="variete"
+						id="variete"
+						type="search"
+					/>
+
+					<label for="nom">Nom</label>
+					<input onchange="getPlantes()" name="nom" id="nom" type="search" />
+
+					<label for="genre">Genre</label>
+					<input
+						onchange="getPlantes()"
+						name="genre"
+						id="genre"
+						type="search"
+					/>
+
+					<label for="espece">Espèce</label>
+					<input
+						onchange="getPlantes()"
+						name="espece"
+						id="espece"
+						type="search"
+					/>
+
+					<label for="famille">Famille</label>
+					<input
+						onchange="getPlantes()"
+						name="famille"
+						id="famille"
+						type="search"
+					/>
+
+					<input id="planteSubmit" type="submit" value="Submit" />
+				</form>
+			</section>
+		</main>
+	</body>
+</html>
+
+<button onclick="">Supprimer</button>
+<button on>Modifier</button>

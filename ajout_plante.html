@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="/pages/plantes/styles/style.css" />
+		<script src="/pages/plantes/javascript/ajout_plante.js" defer></script>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ajout Plante</title>
+	</head>
+	<body>
+		<main>
+			<style>
+				li {
+					list-style: none;
+					font-size: 2rem;
+					padding: 10px;
+				}
+			</style>
+			<ul>
+				<li>
+					<a href="/pages/plantes/index.html">Index</a>
+				</li>
+				<li>
+					<a href="/pages/plantes/search_plante.html">Chercher une plante</a>
+				</li>
+			</ul>
+
+			<section>
+				<h2>Ajouter une plante :</h2>
+				<div id="plantes-table">
+					<table>
+						<tbody id="plantes-tbody"></tbody>
+					</table>
+				</div>
+				<form id="planteForm">
+					<label for="variete">Variété</label>
+					<input name="variete" id="variete" type="text" />
+
+					<label for="nom">Nom</label>
+					<input name="nom" id="nom" type="text" />
+
+					<label for="genre">Genre</label>
+					<input name="genre" id="genre" type="text" />
+
+					<label for="espece">Espèce</label>
+					<input name="espece" id="espece" type="text" />
+
+					<label for="famille">Famille</label>
+					<input name="famille" id="famille" type="text" />
+
+					<input id="planteSubmit" type="submit" value="Submit" />
+				</form>
+				<button onclick="onClickClearDatabase()">
+					Vider la base de données
+				</button>
+			</section>
+		</main>
+	</body>
+</html>
