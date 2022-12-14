@@ -29,20 +29,17 @@ function getInputs(inputA, inputB, inputC, inputD, inputE) {
 
 	let sql = `${queryA} ${queryB} ${queryC} ${queryD} ${queryE}`;
 
-	new (function (e) {
-		e.preventDefault();
-		const xhr = new XMLHttpRequest();
-		xhr.open("POST", "/pages/plantes/php/search_plantes.php", true);
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.onload = () => {
-			if (xhr.status === 200 && xhr.readyState === 4) {
-				document.getElementById("plantes-tbody").innerHTML = xhr.responseText;
-			} else if (xhr.readyState === 4) {
-				console.log("Error occured");
-			}
-		};
-		xhr.send(`sql=${sql}`);
-	})();
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", "/pages/plantes/php/search_plantes.php", true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.onload = () => {
+		if (xhr.status === 200 && xhr.readyState === 4) {
+			document.getElementById("plantes-tbody").innerHTML = xhr.responseText;
+		} else if (xhr.readyState === 4) {
+			console.log("Error occured");
+		}
+	};
+	xhr.send(`sql=${sql}`);
 }
 
 function writeQuery(input, value) {

@@ -3,7 +3,7 @@
 $sql = $_POST["sql"];
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');
 
-$result = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete 
+$result = $mysqli->query("SELECT plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete 
                           FROM plantes 
                           INNER JOIN varietes ON plantes.id = varietes.plante_id 
                           INNER JOIN genres ON plantes.genre_id = genres.id 
@@ -14,7 +14,6 @@ $result = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.
 
 echo '
     <tr>
-      <th class="plante-theader">ID</th>
       <th class="plante-theader">Variété</th>
       <th class="plante-theader">Nom commun</th>
       <th class="plante-theader">Genre</th>
@@ -26,7 +25,6 @@ echo '
 foreach ($result as $row) {
   echo '
       <tr class="plante-tr">
-        <td class="plante-entry">' . $row["id"] . '</td>
         <td class="plante-entry">' . $row["variete"] . '</td>
         <td class="plante-entry">' . $row["nom"] . '</td>
         <td class="plante-entry">' . $row["genre"] . '</td>
