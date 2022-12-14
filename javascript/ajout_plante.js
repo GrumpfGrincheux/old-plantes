@@ -3,7 +3,7 @@ function getPlantes(inputName) {
 	let receiver = document.getElementById("plantes-tbody");
 	let value = input.value;
 	const xhr = new XMLHttpRequest();
-	xhr.open("POST", "/pages/plantes/test/test.php", true);
+	xhr.open("POST", "/pages/plantes/php/get_plantes.php", true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.onload = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
@@ -14,7 +14,6 @@ function getPlantes(inputName) {
 	};
 	xhr.send(`table=${inputName}&val=${value}`);
 }
-window.onload = getPlantes;
 
 const planteSubmitButton = document.getElementById("planteSubmit");
 planteSubmitButton.addEventListener("click", function (e) {

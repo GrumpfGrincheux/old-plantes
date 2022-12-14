@@ -31,3 +31,8 @@ nav a {
 	color: #ffffff;
 	font-style: normal;
 }
+
+main {
+	width: 90vw;
+	margin-top: 51px;
+}
