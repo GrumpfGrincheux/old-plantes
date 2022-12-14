@@ -1,13 +1,22 @@
 <?php
 
-$mysqli = new mysqli("localhost", "root", "root", "plantes");
-$plantes = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete
-                            FROM plantes
-                            INNER JOIN varietes ON plantes.id = varietes.plante_id
-                            INNER JOIN genres ON plantes.genre_id = genres.id
-                            INNER JOIN especes ON plantes.espece_id = especes.id
-                            INNER JOIN familles ON plantes.famille_id = familles.id
-                            ORDER BY plantes.id");
+$col = $_POST["table"];
+$val = $_POST["val"];
+if ($col == "nom") {
+  $table = "plantes";
+} else {
+  $table = $_POST["table"].'s';
+}
+$mysqli = new mysqli("localhost", "root", "root", 'plantes');
+
+$result = $mysqli->query("SELECT plantes.id, plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete 
+                          FROM plantes 
+                          INNER JOIN varietes ON plantes.id = varietes.plante_id 
+                          INNER JOIN genres ON plantes.genre_id = genres.id 
+                          INNER JOIN especes ON plantes.espece_id = especes.id 
+                          INNER JOIN familles ON plantes.famille_id = familles.id 
+                          WHERE $table.$col LIKE '$val%'
+                          ORDER BY plantes.id;");
 
 echo '
     <tr>
@@ -20,15 +29,15 @@ echo '
       <th class="empty-theader"></th>
     </tr>';
 
-foreach ($plantes as $plantes_row) {
+foreach ($result as $row) {
   echo '
       <tr class="plante-tr">
-        <td class="plante-entry">' . $plantes_row["id"] . '</td>
-        <td class="plante-entry">' . $plantes_row["variete"] . '</td>
-        <td class="plante-entry">' . $plantes_row["nom"] . '</td>
-        <td class="plante-entry">' . $plantes_row["genre"] . '</td>
-        <td class="plante-entry">' . $plantes_row["espece"] . '</td>
-        <td class="plante-entry">' . $plantes_row["famille"] . '</td>
+        <td class="plante-entry">' . $row["id"] . '</td>
+        <td class="plante-entry">' . $row["variete"] . '</td>
+        <td class="plante-entry">' . $row["nom"] . '</td>
+        <td class="plante-entry">' . $row["genre"] . '</td>
+        <td class="plante-entry">' . $row["espece"] . '</td>
+        <td class="plante-entry">' . $row["famille"] . '</td>
         <td class="side-pannel">
           <button onclick="">Modifier</button>
         </td>

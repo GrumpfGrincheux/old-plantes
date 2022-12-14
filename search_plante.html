@@ -19,50 +19,52 @@
 			</div>
 		</nav>
 		<main>
-			<section>
-				<h2>Chercher une ou des plantes</h2>
+      <main>
 				<div id="plantes-table">
 					<table>
 						<tbody id="plantes-tbody"></tbody>
 					</table>
 				</div>
-				<form onchange="getPlantes()" id="planteForm">
+				<form id="planteForm">
 					<label for="variete">Variété</label>
 					<input
-						onchange="getPlantes()"
+						onkeyup="controlInputs('variete')"
 						name="variete"
 						id="variete"
-						type="search"
+						type="text"
 					/>
 
 					<label for="nom">Nom</label>
-					<input onchange="getPlantes()" name="nom" id="nom" type="search" />
+					<input
+						onkeyup="controlInputs('nom')"
+						name="nom"
+						id="nom"
+						type="text"
+					/>
 
 					<label for="genre">Genre</label>
 					<input
-						onchange="getPlantes()"
+						onkeyup="controlInputs('genre')"
 						name="genre"
 						id="genre"
-						type="search"
+						type="text"
 					/>
 
 					<label for="espece">Espèce</label>
 					<input
-						onchange="getPlantes()"
+						onkeyup="controlInputs('espece')"
 						name="espece"
 						id="espece"
-						type="search"
+						type="text"
 					/>
 
 					<label for="famille">Famille</label>
 					<input
-						onchange="getPlantes()"
+						onkeyup="controlInputs('famille')"
 						name="famille"
 						id="famille"
-						type="search"
+						type="text"
 					/>
-
-					<input id="planteSubmit" type="submit" value="Submit" />
 				</form>
 			</section>
 		</main>

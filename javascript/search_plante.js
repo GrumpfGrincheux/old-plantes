@@ -1,29 +1,17 @@
-function getPlantes() {
-	const data = new FormData();
+function getPlantes(inputName) {
+	let input = document.getElementById(`${inputName}`);
+	let receiver = document.getElementById("plantes-tbody");
+	let value = input.value;
 	const xhr = new XMLHttpRequest();
-	xhr.open("POST", "/pages/plantes/php/get_plantes.php", true);
-	const receiver = document.getElementById("plantes-tbody");
-	xhr.onload = () => {
-		if (xhr.status == 200 && xhr.readyState === 4) {
-			receiver.innerHTML = xhr.response;
-		} else if (xhr.readyState === 4) {
-			console.log("Error occured");
-		}
-	};
-	xhr.send(data);
-}
-
-function onSubmitDeletePlante(i) {
-	const xhr = new XMLHttpRequest();
-	xhr.open("POST", `/pages/plantes/php/delete_plante.php`, true);
+	xhr.open("POST", "/pages/plantes/test/test.php", true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.onload = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
-			console.log("Status: The plant has been deleted.");
-			console.log("response =", xhr.response);
+			receiver.innerHTML = xhr.responseText;
 		} else if (xhr.readyState === 4) {
 			console.log("Error occured");
 		}
 	};
-	xhr.send(`id=${i}`);
+	xhr.send(`table=${inputName}&val=${value}`);
 }
+window.onload = () => {};
