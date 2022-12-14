@@ -27,7 +27,7 @@ function getInputs(inputA, inputB, inputC, inputD, inputE) {
 		queryE = `AND ${writeQuery(inputE, valueE)} `;
 	}
 
-	let sql = `${queryA} ${queryB} ${queryC} ${queryD} ${queryE}`;
+	let query = `${queryA} ${queryB} ${queryC} ${queryD} ${queryE}`;
 
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/pages/plantes/php/search_plantes.php", true);
@@ -39,7 +39,7 @@ function getInputs(inputA, inputB, inputC, inputD, inputE) {
 			console.log("Error occured");
 		}
 	};
-	xhr.send(`sql=${sql}`);
+	xhr.send(`query=${query}`);
 }
 
 function writeQuery(input, value) {
@@ -53,7 +53,7 @@ function writeQuery(input, value) {
 	if (value == "") {
 		return false;
 	} else {
-		let query = `${table}.${input} LIKE '${value}%'`;
+		let query = `${table}.${input} LIKE "${value}%"`;
 		return query;
 	}
 }

@@ -1,16 +1,20 @@
 <?php
 
-$sql = $_POST["sql"];
+$query = $_POST["query"];
+$sql = "SELECT plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete 
+        FROM plantes 
+        INNER JOIN varietes ON plantes.id = varietes.plante_id 
+        INNER JOIN genres ON plantes.genre_id = genres.id 
+        INNER JOIN especes ON plantes.espece_id = especes.id 
+        INNER JOIN familles ON plantes.famille_id = familles.id 
+        $query
+        ORDER BY plantes.id;";
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');
 
-$result = $mysqli->query("SELECT plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete 
-                          FROM plantes 
-                          INNER JOIN varietes ON plantes.id = varietes.plante_id 
-                          INNER JOIN genres ON plantes.genre_id = genres.id 
-                          INNER JOIN especes ON plantes.espece_id = especes.id 
-                          INNER JOIN familles ON plantes.famille_id = familles.id 
-                          $sql
-                          ORDER BY plantes.id;");
+$result = $mysqli->query($sql);
+
+print_r($sql);
+exit;
 
 echo '
     <tr>
