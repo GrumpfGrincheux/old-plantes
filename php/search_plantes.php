@@ -17,7 +17,7 @@ $data = array($variete, $nom, $genre, $espece, $famille);
 $queries = "";
 
 function writeQuery($query, $val, $queries) {
-  if ($val !== 'false') {
+  if ($val !== '') {
     if ($queries == "") {
     $queries = " WHERE ".$query;
     } else {
@@ -46,39 +46,9 @@ $sql = "SELECT plantes.nom, genres.genre, especes.espece, familles.famille, vari
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');
 $result = $mysqli->query($sql);
 
-$json = "[";
-
-function encodeData($data, $json) {
-  foreach ($data as $row) {
-    $json = $json.(json_encode($row, JSON_UNESCAPED_UNICODE)).",";
-  }
-  $json = $json."]";
-  return $json;
-}
-
-print_r(encodeData($result, $json));
-exit;
-
-echo '
-    <tr>
-      <th class="plante-theader">Variété</th>
-      <th class="plante-theader">Nom commun</th>
-      <th class="plante-theader">Genre</th>
-      <th class="plante-theader">Espèce</th>
-      <th class="plante-theader">Famille</th>
-      <th class="empty-theader"></th>
-    </tr>';
-
+$arr = [];
 foreach ($result as $row) {
-  echo '
-      <tr class="plante-tr">
-        <td class="plante-entry">' . $row["variete"] . '</td>
-        <td class="plante-entry">' . $row["nom"] . '</td>
-        <td class="plante-entry">' . $row["genre"] . '</td>
-        <td class="plante-entry">' . $row["espece"] . '</td>
-        <td class="plante-entry">' . $row["famille"] . '</td>
-        <td class="side-pannel">
-          <button onclick="">Modifier</button>
-        </td>
-      </tr>';
+  $arr[] = $row;
 }
+$json = json_encode($arr, JSON_UNESCAPED_UNICODE, 2);
+echo $json;
