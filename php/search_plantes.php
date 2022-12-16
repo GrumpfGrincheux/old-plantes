@@ -37,14 +37,14 @@ $queries = writeQuery($query_espece, $espece, $queries);
 $queries = writeQuery($query_famille, $famille, $queries);
 
 
-$sql = "SELECT plantes.nom, genres.genre, especes.espece, familles.famille
+$sql = "SELECT plantes.nom, plantes.id AS plante_id, genres.genre, genres.id AS genre_id, especes.espece, especes.id AS espece_id, familles.famille, familles.id AS famille_id
         FROM plantes
         INNER JOIN genres ON plantes.genre_id = genres.id 
         INNER JOIN especes ON plantes.espece_id = especes.id 
         INNER JOIN familles ON plantes.famille_id = familles.id 
         $queries
         ORDER BY familles.id;";
-        
+
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');
 $result = $mysqli->query($sql);
 
