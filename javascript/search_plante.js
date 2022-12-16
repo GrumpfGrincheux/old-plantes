@@ -17,55 +17,46 @@ function getInputs(inputA, inputB, inputC, inputD, inputE) {
 			let especes = [];
 			let familles = [];
 			let varietes = [];
-
+			let html = "";
 			for (let i = 0; i < jsonObject.length; i++) {
 				let entry = jsonObject[i];
 				if (!noms.includes(entry["nom"])) {
 					noms.push(entry["nom"]);
-					document.getElementById(
-						"plantes-table",
-					).innerHTML += `<div class="table-entry" style="grid-row: ${
+					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
 					}; grid-column: 4;"><p>${entry["nom"]}</p></div>`;
 				}
 				if (!genres.includes(entry["genre"])) {
 					genres.push(entry["genre"]);
-					document.getElementById(
-						"plantes-table",
-					).innerHTML += `<div class="table-entry" style="grid-row: ${
+					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
 					}; grid-column: 2;"><p>${entry["genre"]}</p></div>`;
 				}
 				if (!especes.includes(entry["espece"])) {
 					especes.push(entry["espece"]);
-					document.getElementById(
-						"plantes-table",
-					).innerHTML += `<div class="table-entry" style="grid-row: ${
+					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
 					}; grid-column: 3;"><p>${entry["espece"]}</p></div>`;
 				}
 				if (!familles.includes(entry["famille"])) {
 					familles.push(entry["famille"]);
-					document.getElementById(
-						"plantes-table",
-					).innerHTML += `<div class="table-entry" style="grid-row: ${
+					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
 					}; grid-column: 1;"><p>${entry["famille"]}</p></div>`;
 				}
 				if (!varietes.includes(entry["variete"])) {
 					varietes.push(entry["variete"]);
-					document.getElementById(
-						"plantes-table",
-					).innerHTML += `<div class="table-entry" style="grid-row: ${
+					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
 					}; grid-column: 5;"><p>${entry["variete"]}</p></div>`;
 				}
 			}
-			console.log("Noms ~~>", noms);
-			console.log("Genres ~~>", genres);
-			console.log("Espèces ~~>", especes);
-			console.log("Familles ~~>", familles);
-			console.log("Variétés ~~>", varietes);
+			document.getElementById("plantes-table").innerHTML = html;
+			// console.log("Noms ~~>", noms);
+			// console.log("Genres ~~>", genres);
+			// console.log("Espèces ~~>", especes);
+			// console.log("Familles ~~>", familles);
+			// console.log("Variétés ~~>", varietes);
 		} else if (xhr.readyState === 4) {
 			console.log("Error occured");
 		}
