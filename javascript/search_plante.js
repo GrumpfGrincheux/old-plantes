@@ -20,11 +20,11 @@ function getInputs(inputB, inputC, inputD, inputE) {
 			let familles = [];
 			let familles_id = [];
 			let html = `
-        <div class="table-header"><p>Famille</p></div>
-        <div class="table-header"><p>Nom</p></div>
-        <div class="table-header"><p>Genre</p></div>
-        <div class="table-header"><p>Espèce</p></div>
-      `;
+			  <div class="table-header"><p>Famille</p></div>
+			  <div class="table-header"><p>Nom</p></div>
+			  <div class="table-header"><p>Genre</p></div>
+			  <div class="table-header"><p>Espèce</p></div>
+			`;
 			for (let i = 0; i < jsonObject.length; i++) {
 				let entry = jsonObject[i];
 				if (

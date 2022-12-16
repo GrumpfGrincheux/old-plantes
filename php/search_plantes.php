@@ -37,13 +37,16 @@ $queries = writeQuery($query_espece, $espece, $queries);
 $queries = writeQuery($query_famille, $famille, $queries);
 
 
-$sql = "SELECT plantes.nom, plantes.id AS plante_id, genres.genre, genres.id AS genre_id, especes.espece, especes.id AS espece_id, familles.famille, familles.id AS famille_id
-        FROM especes
-        INNER JOIN genres ON especes.genre_id = genres.id 
-        INNER JOIN plantes ON especes.plante_id = plantes.id 
-        INNER JOIN familles ON especes.famille_id = familles.id 
+$sql = "SELECT plantes.nom, plantes.id AS plante_id,
+                genres.genre, genres.id AS genre_id, genres_ids,
+                especes.espece, especes.id AS espece_id, especes_ids,
+                familles.famille, familles.id AS famille_id
+        FROM plantes
+        INNER JOIN genres ON genres_ids REGEXP '\"$genre*[a-z]*\": \"[0-9]{1,8}\"'
+        INNER JOIN especes ON especes_ids REGEXP '\"$espece*[a-z]*\": \"[0-9]{1,8}\"'
+        INNER JOIN familles ON plantes.famille_id = familles.id
         $queries
-        ORDER BY familles.id;";
+        ORDER BY familles.id";
 
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');
 $result = $mysqli->query($sql);
