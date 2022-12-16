@@ -8,10 +8,10 @@ planteSubmitButton.addEventListener("click", function (e) {
 	xhr.onload = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			console.log(xhr.responseText);
+			getInputs("nom", "genre", "espece", "famille");
 		} else if (xhr.readyState === 4) {
 			console.log("Error occured");
 		}
 	};
 	xhr.send(data);
-	getInputs("nom", "genre", "espece", "famille");
 });

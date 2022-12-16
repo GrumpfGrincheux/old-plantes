@@ -38,10 +38,10 @@ $queries = writeQuery($query_famille, $famille, $queries);
 
 
 $sql = "SELECT plantes.nom, plantes.id AS plante_id, genres.genre, genres.id AS genre_id, especes.espece, especes.id AS espece_id, familles.famille, familles.id AS famille_id
-        FROM plantes
-        INNER JOIN genres ON plantes.genre_id = genres.id 
-        INNER JOIN especes ON plantes.espece_id = especes.id 
-        INNER JOIN familles ON plantes.famille_id = familles.id 
+        FROM especes
+        INNER JOIN genres ON especes.genre_id = genres.id 
+        INNER JOIN plantes ON especes.plante_id = plantes.id 
+        INNER JOIN familles ON especes.famille_id = familles.id 
         $queries
         ORDER BY familles.id;";
 

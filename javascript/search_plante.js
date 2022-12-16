@@ -19,42 +19,14 @@ function getInputs(inputB, inputC, inputD, inputE) {
 			let especes_id = [];
 			let familles = [];
 			let familles_id = [];
-			let html = `<div class="table-header"><p>Famille</p></div>
-      <div class="table-header"><p>Genre</p></div>
-      <div class="table-header"><p>Espèce</p></div>
-      <div class="table-header"><p>Nom</p></div>`;
+			let html = `
+        <div class="table-header"><p>Famille</p></div>
+        <div class="table-header"><p>Nom</p></div>
+        <div class="table-header"><p>Genre</p></div>
+        <div class="table-header"><p>Espèce</p></div>
+      `;
 			for (let i = 0; i < jsonObject.length; i++) {
 				let entry = jsonObject[i];
-				if (
-					!plantes.includes(entry["nom"]) ||
-					!plantes_id.includes(entry["plante_id"])
-				) {
-					plantes.push(entry["nom"]);
-					plantes_id.push(entry["plante_id"]);
-					html += `<div class="table-entry" style="grid-row: ${
-						i + 2
-					}; grid-column: 4;"><p>${entry["nom"]}</p></div>`;
-				}
-				if (
-					!genres.includes(entry["genre"]) ||
-					!genres_id.includes(entry["genre_id"])
-				) {
-					genres.push(entry["genre"]);
-					genres_id.push(entry["genre_id"]);
-					html += `<div class="table-entry" style="grid-row: ${
-						i + 2
-					}; grid-column: 2;"><p>${entry["genre"]}</p></div>`;
-				}
-				if (
-					!especes.includes(entry["espece"]) ||
-					!especes_id.includes(entry["espece_id"])
-				) {
-					especes.push(entry["espece"]);
-					especes_id.push(entry["espece_id"]);
-					html += `<div class="table-entry" style="grid-row: ${
-						i + 2
-					}; grid-column: 3;"><p>${entry["espece"]}</p></div>`;
-				}
 				if (
 					!familles.includes(entry["famille"]) ||
 					!familles_id.includes(entry["famille_id"])
@@ -64,6 +36,36 @@ function getInputs(inputB, inputC, inputD, inputE) {
 					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
 					}; grid-column: 1;"><p>${entry["famille"]}</p></div>`;
+				}
+				if (
+					!plantes.includes(entry["nom"]) ||
+					!plantes_id.includes(entry["plante_id"])
+				) {
+					plantes.push(entry["nom"]);
+					plantes_id.push(entry["plante_id"]);
+					html += `<div class="table-entry" style="grid-row: ${
+						i + 2
+					}; grid-column: 2;"><p>${entry["nom"]}</p></div>`;
+				}
+				if (
+					!genres.includes(entry["genre"]) ||
+					!genres_id.includes(entry["genre_id"])
+				) {
+					genres.push(entry["genre"]);
+					genres_id.push(entry["genre_id"]);
+					html += `<div class="table-entry" style="grid-row: ${
+						i + 2
+					}; grid-column: 3;"><p>${entry["genre"]}</p></div>`;
+				}
+				if (
+					!especes.includes(entry["espece"]) ||
+					!especes_id.includes(entry["espece_id"])
+				) {
+					especes.push(entry["espece"]);
+					especes_id.push(entry["espece_id"]);
+					html += `<div class="table-entry" style="grid-row: ${
+						i + 2
+					}; grid-column: 4;"><p>${entry["espece"]}</p></div>`;
 				}
 			}
 			document.getElementById("plantes-table").innerHTML = html;
