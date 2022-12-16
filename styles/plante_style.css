@@ -6,11 +6,6 @@ section {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 }
-.table-headers {
-	margin: 0;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-}
 .table-header {
 	background-color: #1d68279c;
 	font-weight: 900;

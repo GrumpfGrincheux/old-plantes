@@ -1,11 +1,20 @@
 <?php
 
-
-$variete = $_POST['variete'];
-$nom = $_POST['nom'];
-$genre = $_POST['genre'];
-$espece = $_POST['espece'];
-$famille = $_POST['famille'];
+$variete = preg_replace("/'/", "\\", $_POST["variete"]);
+$variete = preg_replace('/"/', "", $variete); // to avoid SQL injections
+$variete = preg_replace('/;/', "", $variete); // to avoid SQL injections
+$nom = preg_replace("/'/", "\\", $_POST["nom"]);
+$nom = preg_replace('/"/', "", $nom); // to avoid SQL injections
+$nom = preg_replace('/;/', "", $nom); // to avoid SQL injections
+$genre = preg_replace("/'/", "\\", $_POST["genre"]);
+$genre = preg_replace('/"/', "", $genre); // to avoid SQL injections
+$genre = preg_replace('/;/', "", $genre); // to avoid SQL injections
+$espece = preg_replace("/'/", "\\", $_POST["espece"]);
+$espece = preg_replace('/"/', "", $espece); // to avoid SQL injections
+$espece = preg_replace('/;/', "", $espece); // to avoid SQL injections
+$famille = preg_replace("/'/", "\\", $_POST["famille"]);
+$famille = preg_replace('/"/', "", $famille); // to avoid SQL injections
+$famille = preg_replace('/;/', "", $famille); // to avoid SQL injections
 
 $query_variete = ' varietes.variete LIKE "'.$variete.'%"'." ";
 $query_nom = ' plantes.nom LIKE "'.$nom.'%"'." ";
@@ -13,7 +22,6 @@ $query_genre = ' genres.genre LIKE "'.$genre.'%"'." ";
 $query_espece = ' especes.espece LIKE "'.$espece.'%"'." ";
 $query_famille = ' familles.famille LIKE "'.$famille.'%"'." ";
 
-$data = array($variete, $nom, $genre, $espece, $famille);
 $queries = "";
 
 function writeQuery($query, $val, $queries) {

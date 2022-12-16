@@ -1,9 +1,9 @@
 function getInputs(inputA, inputB, inputC, inputD, inputE) {
 	let varieteSend = document.getElementById(`${inputA}`).value;
 	let nomSend = document.getElementById(`${inputB}`).value;
-	let genreSend = document.getElementById(`${inputB}`).value;
-	let especeSend = document.getElementById(`${inputB}`).value;
-	let familleSend = document.getElementById(`${inputB}`).value;
+	let genreSend = document.getElementById(`${inputC}`).value;
+	let especeSend = document.getElementById(`${inputD}`).value;
+	let familleSend = document.getElementById(`${inputE}`).value;
 
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/pages/plantes/php/search_plantes.php", true);
@@ -17,7 +17,11 @@ function getInputs(inputA, inputB, inputC, inputD, inputE) {
 			let especes = [];
 			let familles = [];
 			let varietes = [];
-			let html = "";
+			let html = `<div class="table-header"><p>Famille</p></div>
+      <div class="table-header"><p>Genre</p></div>
+      <div class="table-header"><p>Espèce</p></div>
+      <div class="table-header"><p>Nom</p></div>
+      <div class="table-header"><p>Variétés</p></div>`;
 			for (let i = 0; i < jsonObject.length; i++) {
 				let entry = jsonObject[i];
 				if (!noms.includes(entry["nom"])) {
