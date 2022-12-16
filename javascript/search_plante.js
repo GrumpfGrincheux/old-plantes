@@ -1,5 +1,4 @@
-function getInputs(inputA, inputB, inputC, inputD, inputE) {
-	let varieteSend = document.getElementById(`${inputA}`).value;
+function getInputs(inputB, inputC, inputD, inputE) {
 	let nomSend = document.getElementById(`${inputB}`).value;
 	let genreSend = document.getElementById(`${inputC}`).value;
 	let especeSend = document.getElementById(`${inputD}`).value;
@@ -16,12 +15,10 @@ function getInputs(inputA, inputB, inputC, inputD, inputE) {
 			let genres = [];
 			let especes = [];
 			let familles = [];
-			let varietes = [];
 			let html = `<div class="table-header"><p>Famille</p></div>
       <div class="table-header"><p>Genre</p></div>
       <div class="table-header"><p>Espèce</p></div>
-      <div class="table-header"><p>Nom</p></div>
-      <div class="table-header"><p>Variétés</p></div>`;
+      <div class="table-header"><p>Nom</p></div>`;
 			for (let i = 0; i < jsonObject.length; i++) {
 				let entry = jsonObject[i];
 				if (!noms.includes(entry["nom"])) {
@@ -48,24 +45,17 @@ function getInputs(inputA, inputB, inputC, inputD, inputE) {
 						i + 2
 					}; grid-column: 1;"><p>${entry["famille"]}</p></div>`;
 				}
-				if (!varietes.includes(entry["variete"])) {
-					varietes.push(entry["variete"]);
-					html += `<div class="table-entry" style="grid-row: ${
-						i + 2
-					}; grid-column: 5;"><p>${entry["variete"]}</p></div>`;
-				}
 			}
 			document.getElementById("plantes-table").innerHTML = html;
 			// console.log("Noms ~~>", noms);
 			// console.log("Genres ~~>", genres);
 			// console.log("Espèces ~~>", especes);
 			// console.log("Familles ~~>", familles);
-			// console.log("Variétés ~~>", varietes);
 		} else if (xhr.readyState === 4) {
 			console.log("Error occured");
 		}
 	};
 	xhr.send(
-		`variete=${varieteSend}&nom=${nomSend}&genre=${genreSend}&espece=${especeSend}&famille=${familleSend}`,
+		`nom=${nomSend}&genre=${genreSend}&espece=${especeSend}&famille=${familleSend}`,
 	);
 }
