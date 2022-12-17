@@ -1,37 +1,51 @@
 <?php
 
-$sql = $_POST["sql"];
-$mysqli = new mysqli("localhost", "root", "root", 'plantes');
+$genre = preg_replace("/'/", "\\", $_POST["genre"]);
+$genre = preg_replace('/"/', "", $genre); // to avoid SQL injections
+$genre = preg_replace('/;/', "", $genre); // to avoid SQL injections
+$espece = preg_replace("/'/", "\\", $_POST["espece"]);
+$espece = preg_replace('/"/', "", $espece); // to avoid SQL injections
+$espece = preg_replace('/;/', "", $espece); // to avoid SQL injections
+$famille = preg_replace("/'/", "\\", $_POST["famille"]);
+$famille = preg_replace('/"/', "", $famille); // to avoid SQL injections
+$famille = preg_replace('/;/', "", $famille); // to avoid SQL injections
 
-$result = $mysqli->query("SELECT plantes.nom, genres.genre, especes.espece, familles.famille, varietes.variete 
-                          FROM plantes 
-                          INNER JOIN varietes ON plantes.id = varietes.plante_id 
-                          INNER JOIN genres ON plantes.genre_id = genres.id 
-                          INNER JOIN especes ON plantes.espece_id = especes.id 
-                          INNER JOIN familles ON plantes.famille_id = familles.id 
-                          $sql
-                          ORDER BY plantes.id;");
+$query_genre = ' genres.name LIKE "'.$genre.'%"'." ";
+$query_espece = ' especes.name LIKE "'.$espece.'%"'." ";
+$query_famille = ' familles.name LIKE "'.$famille.'%"'." ";
 
-echo '
-    <tr>
-      <th class="plante-theader">Variété</th>
-      <th class="plante-theader">Nom commun</th>
-      <th class="plante-theader">Genre</th>
-      <th class="plante-theader">Espèce</th>
-      <th class="plante-theader">Famille</th>
-      <th class="empty-theader"></th>
-    </tr>';
+$queries = "";
 
-foreach ($result as $row) {
-  echo '
-      <tr class="plante-tr">
-        <td class="plante-entry">' . $row["variete"] . '</td>
-        <td class="plante-entry">' . $row["nom"] . '</td>
-        <td class="plante-entry">' . $row["genre"] . '</td>
-        <td class="plante-entry">' . $row["espece"] . '</td>
-        <td class="plante-entry">' . $row["famille"] . '</td>
-        <td class="side-pannel">
-          <button onclick="">Modifier</button>
-        </td>
-      </tr>';
+function writeQuery($query, $val, $queries) {
+  if ($val !== '') {
+    if ($queries == "") {
+    $queries = " WHERE ".$query;
+    } else {
+      $queries = $queries." AND ".$query;
+    }
+  }
+  return $queries;
 }
+
+$queries = writeQuery($query_genre, $genre, $queries);
+$queries = writeQuery($query_espece, $espece, $queries);
+$queries = writeQuery($query_famille, $famille, $queries);
+
+
+$sql = "SELECT familles.id AS famille_id, familles.name AS famille, genres.id AS genre_id, genres.name AS genre, especes.id AS espece_id, especes.name AS espece
+        FROM especes
+        INNER JOIN genres ON especes.genre_id = genres.id
+        INNER JOIN familles ON especes.famille_id = familles.id
+        $queries
+        ORDER BY familles.id";
+
+$mysqli = new mysqli("localhost", "root", "root", 'plantes');
+$result = $mysqli->query($sql);
+
+$arr = [];
+foreach ($result as $row) {
+   $arr[] = $row;
+}
+
+$json = json_encode($arr, JSON_UNESCAPED_UNICODE, 2);
+echo $json;

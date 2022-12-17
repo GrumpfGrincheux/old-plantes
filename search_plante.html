@@ -18,33 +18,25 @@
 				<a href="/pages/plantes/ajout_plante.html">Ajouter une plante</a>
 			</div>
 		</nav>
-		<main>
-      <main>
+		<main id="main">
+			<section>
 				<div id="plantes-table">
-					<table>
-						<tbody id="plantes-tbody"></tbody>
-					</table>
+					<div class="table-header"><p>Famille</p></div>
+					<div class="table-header"><p>Genre</p></div>
+					<div class="table-header"><p>Espèce</p></div>
 				</div>
 				<form id="planteForm">
-					<label for="variete">Variété</label>
+					<label for="famille">Famille</label>
 					<input
-						onkeyup="getInputs('variete', 'nom', 'genre', 'espece', 'famille')"
-						name="variete"
-						id="variete"
-						type="text"
-					/>
-
-					<label for="nom">Nom</label>
-					<input
-						onkeyup="getInputs('variete', 'nom', 'genre', 'espece', 'famille')"
-						name="nom"
-						id="nom"
+						onkeyup="getInputs('genre', 'espece', 'famille')"
+						name="famille"
+						id="famille"
 						type="text"
 					/>
 
 					<label for="genre">Genre</label>
 					<input
-						onkeyup="getInputs('variete', 'nom', 'genre', 'espece', 'famille')"
+						onkeyup="getInputs('genre', 'espece', 'famille')"
 						name="genre"
 						id="genre"
 						type="text"
@@ -52,21 +44,13 @@
 
 					<label for="espece">Espèce</label>
 					<input
-						onkeyup="getInputs('variete', 'nom', 'genre', 'espece', 'famille')"
+						onkeyup="getInputs('genre', 'espece', 'famille')"
 						name="espece"
 						id="espece"
-						type="text"
-					/>
-
-					<label for="famille">Famille</label>
-					<input
-						onkeyup="getInputs('variete', 'nom', 'genre', 'espece', 'famille')"
-						name="famille"
-						id="famille"
 						type="text"
 					/>
 				</form>
 			</section>
 		</main>
 	</body>
-</html
+</html>

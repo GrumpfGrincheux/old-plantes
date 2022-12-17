@@ -1,40 +1,31 @@
 section {
 	width: fit-content;
 }
-table,
-tbody,
-tr,
-th,
-td {
-	border-collapse: collapse;
-	padding: 0;
-	border: none;
+#plantes-table {
 	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 }
-th {
-	border: 2px solid black;
-	padding: 10px;
+.table-header {
+	background-color: #1d68279c;
+	font-weight: 900;
+	font-size: 2rem;
+	border: 3px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-td {
+.table-entry {
 	border: 1px solid black;
-	padding: 10px;
-}
-.side-pannel {
-	visibility: hidden;
-}
-.plante-tr:hover {
-	background-color: rgba(163, 57, 57, 0.432);
-}
-.plante-tr:hover .side-pannel {
-	visibility: visible;
-}
-.empty-theader {
-	border: none;
+	display: flex;
+	justify-content: center;
+	height: 50px;
+	align-items: center;
 }
 #planteForm {
 	display: grid;
 	width: 100%;
-	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: repeat(3, 1fr);
 	grid-template-columns: 1fr 1fr;
 }
 #planteForm input {
