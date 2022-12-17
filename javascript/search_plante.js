@@ -1,5 +1,4 @@
-function getInputs(inputB, inputC, inputD, inputE) {
-	let nomSend = document.getElementById(`${inputB}`).value;
+function getInputs(inputC, inputD, inputE) {
 	let genreSend = document.getElementById(`${inputC}`).value;
 	let especeSend = document.getElementById(`${inputD}`).value;
 	let familleSend = document.getElementById(`${inputE}`).value;
@@ -10,9 +9,6 @@ function getInputs(inputB, inputC, inputD, inputE) {
 	xhr.onload = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			const jsonObject = JSON.parse(xhr.responseText);
-
-			let plantes = [];
-			let plantes_id = [];
 			let genres = [];
 			let genres_id = [];
 			let especes = [];
@@ -21,7 +17,6 @@ function getInputs(inputB, inputC, inputD, inputE) {
 			let familles_id = [];
 			let html = `
 			  <div class="table-header"><p>Famille</p></div>
-			  <div class="table-header"><p>Nom</p></div>
 			  <div class="table-header"><p>Genre</p></div>
 			  <div class="table-header"><p>Espèce</p></div>
 			`;
@@ -38,24 +33,14 @@ function getInputs(inputB, inputC, inputD, inputE) {
 					}; grid-column: 1;"><p>${entry["famille"]}</p></div>`;
 				}
 				if (
-					!plantes.includes(entry["nom"]) ||
-					!plantes_id.includes(entry["plante_id"])
-				) {
-					plantes.push(entry["nom"]);
-					plantes_id.push(entry["plante_id"]);
-					html += `<div class="table-entry" style="grid-row: ${
-						i + 2
-					}; grid-column: 2;"><p>${entry["nom"]}</p></div>`;
-				}
-				if (
-					!genres.includes(entry["genre"]) ||
-					!genres_id.includes(entry["genre_id"])
+					!genres.includes(entry["genre"]) // ||
+					/* !genres_id.includes(entry["genre_id"]) */
 				) {
 					genres.push(entry["genre"]);
-					genres_id.push(entry["genre_id"]);
+					/* genres_id.push(entry["genre_id"]); */
 					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
-					}; grid-column: 3;"><p>${entry["genre"]}</p></div>`;
+					}; grid-column: 2;"><p>${entry["genre"]}</p></div>`;
 				}
 				if (
 					!especes.includes(entry["espece"]) ||
@@ -65,12 +50,10 @@ function getInputs(inputB, inputC, inputD, inputE) {
 					especes_id.push(entry["espece_id"]);
 					html += `<div class="table-entry" style="grid-row: ${
 						i + 2
-					}; grid-column: 4;"><p>${entry["espece"]}</p></div>`;
+					}; grid-column: 3;"><p>${entry["espece"]}</p></div>`;
 				}
 			}
 			document.getElementById("plantes-table").innerHTML = html;
-			console.log("Plantes ~~>", plantes);
-			console.log("Plantes IDs ~~>", plantes_id);
 			console.log("Genres ~~>", genres);
 			console.log("Genres IDs ~~>", genres_id);
 			console.log("Espèces ~~>", especes);
@@ -81,7 +64,5 @@ function getInputs(inputB, inputC, inputD, inputE) {
 			console.log("Error occured");
 		}
 	};
-	xhr.send(
-		`nom=${nomSend}&genre=${genreSend}&espece=${especeSend}&famille=${familleSend}`,
-	);
+	xhr.send(`genre=${genreSend}&espece=${especeSend}&famille=${familleSend}`);
 }

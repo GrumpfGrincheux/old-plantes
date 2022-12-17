@@ -2,16 +2,16 @@
 
 $mysqli = new mysqli("localhost", "root", "root", "plantes");
 
-$nom = preg_replace("/'/", "\\", $_POST["nom"]);
+$nom = $_POST["nom"];
 $nom = preg_replace('/"/', "", $nom); // to avoid SQL injections
 $nom = preg_replace('/;/', "", $nom); // to avoid SQL injections
-$genre = preg_replace("/'/", "\\", $_POST["genre"]);
+$genre = $_POST["genre"];
 $genre = preg_replace('/"/', "", $genre); // to avoid SQL injections
 $genre = preg_replace('/;/', "", $genre); // to avoid SQL injections
-$espece = preg_replace("/'/", "\\", $_POST["espece"]);
+$espece = $_POST["espece"];
 $espece = preg_replace('/"/', "", $espece); // to avoid SQL injections
 $espece = preg_replace('/;/', "", $espece); // to avoid SQL injections
-$famille = preg_replace("/'/", "\\", $_POST["famille"]);
+$famille = $_POST["famille"];
 $famille = preg_replace('/"/', "", $famille); // to avoid SQL injections
 $famille = preg_replace('/;/', "", $famille); // to avoid SQL injections
 

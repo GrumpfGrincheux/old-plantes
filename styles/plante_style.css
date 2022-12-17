@@ -4,7 +4,7 @@ section {
 #plantes-table {
 	margin: 0;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
 .table-header {
 	background-color: #1d68279c;
@@ -25,7 +25,7 @@ section {
 #planteForm {
 	display: grid;
 	width: 100%;
-	grid-template-rows: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
 	grid-template-columns: 1fr 1fr;
 }
 #planteForm input {
