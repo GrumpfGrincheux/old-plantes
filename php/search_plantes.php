@@ -10,9 +10,9 @@ $famille = preg_replace("/'/", "\\", $_POST["famille"]);
 $famille = preg_replace('/"/', "", $famille); // to avoid SQL injections
 $famille = preg_replace('/;/', "", $famille); // to avoid SQL injections
 
-$query_genre = ' plantes.genres_ids LIKE \'%'.$genre.'\' ';
-$query_espece = ' plantes.especes_ids LIKE \'%'.$espece.'\' ';
-$query_famille = ' familles.familles LIKE \'%'.$famille.'\' ';
+$query_genre = ' genres.name LIKE "'.$genre.'%"'." ";
+$query_espece = ' especes.name LIKE "'.$espece.'%"'." ";
+$query_famille = ' familles.name LIKE "'.$famille.'%"'." ";
 
 $queries = "";
 
@@ -36,6 +36,7 @@ $sql = "SELECT familles.id AS famille_id, familles.name AS famille, genres.id AS
         FROM especes
         INNER JOIN genres ON especes.genre_id = genres.id
         INNER JOIN familles ON especes.famille_id = familles.id
+        $queries
         ORDER BY familles.id";
 
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');
