@@ -6,7 +6,7 @@ main {
 	margin-top: 150px;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: max-content auto;
 }
 .left-side {
 	margin: 0;
@@ -54,23 +54,35 @@ main {
 }
 
 .search-result-list {
-	border: 1px #d3d3d3 solid;
 	padding: 7px;
+	display: grid;
+	grid-template-columns: max-content max-content max-content;
+	grid-auto-rows: max-content;
 }
 .search-result-list-hidden {
 	visibility: hidden;
 }
-.search-result-list p {
+.result-header {
 	color: #646464;
 	font-style: italic;
+	border-left: 1px #d3d3d3 solid;
+	padding-bottom: 25px;
 }
-.search-result-list ul li {
-	list-style: none;
-	color: #424242;
+.result {
+	color: #000000;
+	font-style: normal;
+	border-left: 1px #d3d3d3 solid;
+
+	padding-bottom: 10px;
 }
-#especes li {
+.result-espece {
 	font-style: italic;
-	font-weight: 400;
+}
+.result-bg-color-light {
+	background-color: #e0e0e0;
+}
+.result-bg-color-dark {
+	background-color: #cecece;
 }
 .right-side {
 	margin: 0;
