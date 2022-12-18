@@ -1,0 +1,79 @@
+main {
+	width: 100%;
+	height: 100%;
+}
+.main-content {
+	margin-top: 150px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 30% 70%;
+}
+.left-side {
+	margin: 0;
+	padding: 5px;
+	border: #000000 solid 1px;
+}
+#form-and-results {
+	margin: 0;
+	padding: 0;
+	border: #000000 solid 1px;
+	display: grid;
+	grid-template-rows: 15% 85%;
+	height: 75vh;
+}
+#search-form {
+	margin: 0;
+	padding: 5px;
+	padding-left: 25px;
+	padding-right: 25px;
+	border: #000000 solid 1px;
+	display: flex;
+	align-items: center;
+}
+#planteForm {
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-rows: 1fr 2fr;
+	width: 100%;
+}
+#planteForm label {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+#planteForm input {
+	margin: 0;
+	padding: 0;
+}
+#form-results {
+	margin: 0;
+	padding: 0;
+	border: #000000 solid 1px;
+	display: flex;
+}
+
+.search-result-list {
+	border: 1px #d3d3d3 solid;
+	padding: 7px;
+}
+.search-result-list-hidden {
+	visibility: hidden;
+}
+.search-result-list p {
+	color: #646464;
+	font-style: italic;
+}
+.search-result-list ul li {
+	list-style: none;
+	color: #424242;
+}
+#especes li {
+	font-style: italic;
+	font-weight: 400;
+}
+.right-side {
+	margin: 0;
+	padding: 0;
+	border: #000000 solid 1px;
+}
