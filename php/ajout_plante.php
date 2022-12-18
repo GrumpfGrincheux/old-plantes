@@ -2,18 +2,18 @@
 
 $mysqli = new mysqli("localhost", "root", "root", "plantes");
 
-$nom = $_POST["nom"];
-$nom = preg_replace('/"/', "", $nom); // to avoid SQL injections
-$nom = preg_replace('/;/', "", $nom); // to avoid SQL injections
-$genre = $_POST["genre"];
-$genre = preg_replace('/"/', "", $genre); // to avoid SQL injections
-$genre = preg_replace('/;/', "", $genre); // to avoid SQL injections
-$espece = $_POST["espece"];
-$espece = preg_replace('/"/', "", $espece); // to avoid SQL injections
-$espece = preg_replace('/;/', "", $espece); // to avoid SQL injections
-$famille = $_POST["famille"];
-$famille = preg_replace('/"/', "", $famille); // to avoid SQL injections
-$famille = preg_replace('/;/', "", $famille); // to avoid SQL injections
+$nom = preg_replace("/'/", "\'", $_POST["nom"]);
+$nom = preg_replace('/"/', '\"', $nom); // to avoid SQL injections
+$nom = preg_replace('/;/', "\;", $nom); // to avoid SQL injections
+$genre = preg_replace("/'/", "\'", $_POST["genre"]);
+$genre = preg_replace('/"/', '\"', $genre); // to avoid SQL injections
+$genre = preg_replace('/;/', "\;", $genre); // to avoid SQL injections
+$espece = preg_replace("/'/", "\'", $_POST["espece"]);
+$espece = preg_replace('/"/', '\"', $espece); // to avoid SQL injections
+$espece = preg_replace('/;/', "\;", $espece); // to avoid SQL injections
+$famille = preg_replace("/'/", "\'", $_POST["famille"]);
+$famille = preg_replace('/"/', '\"', $famille); // to avoid SQL injections
+$famille = preg_replace('/;/', "\;", $famille); // to avoid SQL injections
 
 function exists($data, $sql, $mysqli)
 {
@@ -31,17 +31,15 @@ function exists($data, $sql, $mysqli)
 }
 
 $is_famille = $mysqli->query("SELECT * FROM familles WHERE famille = '$famille'");
+$is_nom = $mysqli->query("SELECT * FROM plantes WHERE nom = '$nom' AND famille_id = '$famille_id'");
+$is_genre = $mysqli->query("SELECT * FROM genres WHERE genre = '$genre' AND famille_id = '$famille_id' AND plante_id = '$plante_id'");
+$is_espece = $mysqli->query("SELECT * FROM especes WHERE espece = '$espece' AND plante_id = '$plante_id' AND famille_id = '$famille_id' AND genre_id = '$genre_id'");
+
 $famille_sql = "INSERT INTO familles(famille) VALUES ('$famille')";
 $famille_id = exists($is_famille, $famille_sql, $mysqli);
-
-$is_nom = $mysqli->query("SELECT * FROM plantes WHERE nom = '$nom' AND famille_id = '$famille_id'");
 $nom_sql = "INSERT INTO plantes(nom, famille_id) VALUES ('$nom', '$famille_id')";
 $plante_id = exists($is_nom, $nom_sql, $mysqli);
-
-$is_genre = $mysqli->query("SELECT * FROM genres WHERE genre = '$genre' AND famille_id = '$famille_id' AND plante_id = '$plante_id'");
 $genre_sql = "INSERT INTO genres(genre, plante_id, famille_id) VALUES ('$genre', '$plante_id', '$famille_id')";
 $genre_id = exists($is_genre, $genre_sql, $mysqli);
-
-$is_espece = $mysqli->query("SELECT * FROM especes WHERE espece = '$espece' AND plante_id = '$plante_id' AND famille_id = '$famille_id' AND genre_id = '$genre_id'");
 $espece_sql = "INSERT INTO especes(espece, genre_id, plante_id, famille_id) VALUES ('$espece', '$genre_id', '$plante_id', '$famille_id')";
 $espece_id = exists($is_espece, $espece_sql, $mysqli);
