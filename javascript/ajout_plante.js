@@ -1,8 +1,8 @@
-const addForm = document.getElementById("addForm");
-addForm.addEventListener("input", addPlant);
+const planteSubmit = document.getElementById("planteSubmit");
+planteSubmit.addEventListener("click", addPlant);
 
 function addPlant() {
-	const send = new FormData(addForm);
+	const send = new FormData(planteSubmit);
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/pages/plantes/php/ajout_plante.php", true);
 	xhr.onload = () => {
