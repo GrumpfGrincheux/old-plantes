@@ -16,27 +16,51 @@ function getResultData() {
 				const genres = [];
 				const especes = [];
 				html = `
-          <p class="result-header">Familles</p>
-          <p class="result-header">Genres</p>
-          <p class="result-header">Espèces</p>
-          `;
+				  <p class="result-header">Familles</p>
+				  <p class="result-header">Genres</p>
+				  <p class="result-header">Espèces</p>
+				  `;
+				let backGroundColors = [
+					"result-bg-color-dark",
+					"result-bg-color-light",
+					"result-bg-color-dark",
+					"result-bg-color-light",
+					"result-bg-color-dark",
+					"result-bg-color-light",
+					"result-bg-color-dark",
+					"result-bg-color-light",
+					"result-bg-color-dark",
+					"result-bg-color-light",
+					"result-bg-color-dark",
+					"result-bg-color-light",
+					"result-bg-color-dark",
+					"result-bg-color-light",
+				];
+				let bgIndex = 0;
 				let counter = 0;
 				jsonObject.forEach((element) => {
 					if (!familles.includes(element.famille)) {
 						familles.push(element.famille);
-						html += `<p class="result" style="grid-row: ${
-							counter + 2
-						}; grid-column: 1;">${element.famille}</p>`;
+						html += `<p class="result ${
+							backGroundColors[bgIndex - 1]
+						}" style="grid-row: ${counter + 2}; grid-column: 1;">${
+							element.famille
+						}</p>`;
 					}
 					if (!genres.includes(element.genre)) {
+						++bgIndex;
 						genres.push(element.genre);
-						html += `<p class="result" style="grid-row: ${
-							counter + 2
-						}; grid-column: 2;">${element.genre}</p>`;
+						html += `<p class="result ${
+							backGroundColors[bgIndex]
+						}" style="grid-row: ${counter + 2}; grid-column: 2;">${
+							element.genre
+						}</p>`;
 					}
 					if (!especes.includes(element.espece)) {
 						especes.push(element.espece);
-						html += `<p class="result result-espece" style="grid-row: ${
+						html += `<p class="result ${
+							backGroundColors[bgIndex]
+						} result-espece" style="grid-row: ${
 							counter + 2
 						}; grid-column: 3;">${element.espece}</p>`;
 					}

@@ -40,6 +40,21 @@
 									type="text"
 									placeholder="Phaseolus vulgaris"
 								/>
+
+                <fieldset style="display: flex; justify-content: space-evenly;">
+                  <legend style="padding-left: 5px; padding-right: 5px; text-align: center;">Chercher dans :</legend>
+                  <input type="radio" name="order" id="order-famille" value="famille">
+                  <label style="padding: 5px;" for="order-famille">Famille</label>
+
+                  <input type="radio" name="order" id="order-genre" value="genre">
+                  <label style="padding: 5px;" for="order-genre">Genre</label>
+
+                  <input type="radio" name="order" id="order-espece" value="espece">
+                  <label style="padding: 5px;" for="order-espece">Espèces</label>
+
+                  <input type="radio" name="order" id="order-all" value="all" checked>
+                  <label style="padding: 5px;" for="order-all">Tout</label>
+                </fieldset>
 							</form>
 						</div>
 						<div class="" id="form-results">

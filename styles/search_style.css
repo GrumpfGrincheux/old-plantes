@@ -18,7 +18,7 @@ main {
 	padding: 0;
 	border: #000000 solid 1px;
 	display: grid;
-	grid-template-rows: 15% 85%;
+	grid-template-rows: max-content auto;
 	height: 75vh;
 }
 #search-form {
@@ -51,6 +51,8 @@ main {
 	padding: 0;
 	border: #000000 solid 1px;
 	display: flex;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .search-result-list {
