@@ -1,26 +1,31 @@
 <?php
 
-$post = preg_replace("/'/", "\\'", $_POST["search"]);
-$post = preg_replace('/"/', "", $post);
-$post = preg_replace('/;/', "", $post); // to avoid SQL injections
+$post = [];
 
-if (mb_strlen($post) == 2) {
-  $post = str_replace($post[1], "_", $post);
+# TO AVOID SQL INJECTIONS
+foreach($_POST as $k => $v){
+  $v = preg_replace("/'/", "\\'", $v);
+  $v = preg_replace('/"/', "", $v);
+  $v = preg_replace('/;/', "", $v);
+  $post[$k] = $v;
 }
-if (mb_strlen($post) == 4) {
-  $post = str_replace($post[random_int(1, 3)], "_", $post);
-  $post = str_replace($post[random_int(1, 3)], "_", $post);
+$search = $post["search"];
+
+if (mb_strlen($search) == 2) {
+  $search = str_replace($search[1], "_", $search);
+}
+if (mb_strlen($search) == 4) {
+  $search = str_replace($search[random_int(1, 3)], "_", $search);
+  $search = str_replace($search[random_int(1, 3)], "_", $search);
 }
 
 $order = $_POST["order"];
 if ($order == "all") {
-  $clause = "WHERE familles.name LIKE \"$post%\" 
-              OR genres.name LIKE \"$post%\" 
-              OR especes.name LIKE \"$post%\"";
-} else if ($order == "nom") {
-  $clause = "WHERE especes.nom_commun LIKE \"$post%\"";
+  $clause = "WHERE familles.name LIKE \"$search%\" 
+              OR genres.name LIKE \"$search%\" 
+              OR especes.name LIKE \"$search%\"";
 } else {
-  $clause = "WHERE ".$order."s.name LIKE \"$post%\"";
+  $clause = "WHERE ".$order."s.name LIKE \"$search%\"";
 }
 
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');

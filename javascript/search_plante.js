@@ -19,9 +19,9 @@ function getResultData() {
 				  <p class="result-header">Familles</p>
 				  <p class="result-header">Genres</p>
 				  <p class="result-header">Espèces</p>
-          <p class="result-header">Nom commun</p>
 				  `;
 				let backGroundColors = [
+					"result-bg-color-light",
 					"result-bg-color-dark",
 					"result-bg-color-light",
 					"result-bg-color-dark",
@@ -37,7 +37,7 @@ function getResultData() {
 					"result-bg-color-dark",
 					"result-bg-color-light",
 				];
-				let bgIndex = 0;
+				let bgIndex = 1;
 				let counter = 0;
 				jsonObject.forEach((element) => {
 					if (!familles.includes(element.famille)) {
@@ -63,12 +63,7 @@ function getResultData() {
 							backGroundColors[bgIndex]
 						} result-espece" style="grid-row: ${
 							counter + 2
-						}; grid-column: 3;">${element.espece}</p>
-            <p class="result ${
-							backGroundColors[bgIndex]
-						} result-espece" style="grid-row: ${
-							counter + 2
-						}; grid-column: 4;">${element.nom}</p>`;
+						}; grid-column: 3;">${element.espece}</p>`;
 					}
 					counter++;
 				});

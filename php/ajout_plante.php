@@ -1,19 +1,14 @@
 <?php
 
-$mysqli = new mysqli("localhost", "root", "root", "plantes");
+$post = [];
 
-$nom = preg_replace("/'/", "\\'", $_POST["nom"]);
-$nom = preg_replace('/"/', "", $nom); // to avoid SQL injections
-$nom = preg_replace('/;/', "", $nom); // to avoid SQL injections
-$genre = preg_replace("/'/", "\\'", $_POST["genre"]);
-$genre = preg_replace('/"/', "", $genre); // to avoid SQL injections
-$genre = preg_replace('/;/', "", $genre); // to avoid SQL injections
-$espece = preg_replace("/'/", "\\'", $_POST["espece"]);
-$espece = preg_replace('/"/', "", $espece); // to avoid SQL injections
-$espece = preg_replace('/;/', "", $espece); // to avoid SQL injections
-$famille = preg_replace("/'/", "\\'", $_POST["famille"]);
-$famille = preg_replace('/"/', "", $famille); // to avoid SQL injections
-$famille = preg_replace('/;/', "", $famille); // to avoid SQL injections
+# TO AVOID SQL INJECTIONS
+foreach($_POST as $k => $v){
+  $v = preg_replace("/'/", "\\'", $v);
+  $v = preg_replace('/"/', "", $v);
+  $v = preg_replace('/;/', "", $v);
+  $post[$k] = $v;
+}
 
 function exists($data, $sql, $mysqli)
 {

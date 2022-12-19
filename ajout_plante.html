@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="/pages/plantes/styles/search_style.css" />
+		<link rel="stylesheet" href="/pages/plantes/styles/ajout_style.css" />
 		<link rel="stylesheet" href="/pages/plantes/styles/global_style.css" />
 		<script src="/pages/plantes/javascript/ajout_plante.js" defer></script>
-		<script src="/pages/plantes/javascript/search_plante.js" defer></script>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,61 +27,73 @@
 				<a href="/pages/plantes/ajout_plante.html">AJOUTER</a>
 			</div>
 		</nav>
-    <main>
+		<main>
 			<div class="main-content">
 				<section class="left-side">
-					<div class="" id="form-and-results">
-						<div class="" id="search-form">
-							<form id="planteForm">
-								<label for="search">Chercher une espèce, famille</label>
+					<fieldset>
+						<legend>Sélectionner ou ajouter</legend>
+						<div class="forms-container">
+							<form
+								oninput="autoComplete(addFam)"
+								id="add-famille"
+								class="add-form"
+								onsubmit="showForm(addGen); return false"
+							>
+								<label for="famille">Famille</label>
 								<input
-									name="search"
-									id="search"
+									class="text-input"
+									name="famille"
+									id="famille"
 									type="text"
-									placeholder="Phaseolus vulgaris"
 								/>
-
-                <fieldset style="display: flex; justify-content: space-evenly;">
-                  <legend style="padding-left: 5px; padding-right: 5px; text-align: center;">Chercher dans :</legend>
-                  <input type="radio" name="order" id="order-famille" value="famille">
-                  <label style="padding: 5px;" for="order-famille">Famille</label>
-
-                  <input type="radio" name="order" id="order-genre" value="genre">
-                  <label style="padding: 5px;" for="order-genre">Genre</label>
-
-                  <input type="radio" name="order" id="order-espece" value="espece">
-                  <label style="padding: 5px;" for="order-espece">Espèces</label>
-
-                  <input type="radio" name="order" id="order-nom" value="nom">
-                  <label style="padding: 5px;" for="order-nom">Nom commun</label>
-
-                  <input type="radio" name="order" id="order-all" value="all" checked>
-                  <label style="padding: 5px;" for="order-all">Tout</label>
-                </fieldset>
+								<input
+									class="submit-button"
+									id="famille-submit"
+									type="submit"
+									value="Soumettre"
+								/>
 							</form>
+							<div id="famille-suggest"></div>
+							<form
+								oninput="autoComplete(addFam, addGen)"
+								id="add-genre"
+								class="add-form"
+								onsubmit="showForm(addEsp); return false"
+							>
+								<label for="genre">Genre</label>
+								<input class="text-input" name="genre" id="genre" type="text" />
+								<input
+									class="submit-button"
+									id="genre-submit"
+									type="submit"
+									value="Soumettre"
+								/>
+							</form>
+							<div id="genre-suggest"></div>
+							<form
+								oninput="autoComplete(addFam, addGen, addEsp)"
+								id="add-espece"
+								class="add-form"
+								onsubmit="return false"
+							>
+								<label for="espece">Espèce</label>
+								<input
+									class="text-input text-input-espece"
+									name="espece"
+									id="espece"
+									type="text"
+								/>
+								<input
+									class="submit-button"
+									id="espece-submit"
+									type="submit"
+									value="Soumettre"
+								/>
+							</form>
+							<div id="espece-suggest"></div>
 						</div>
-						<div class="" id="form-results">
-							<div id="results-grid" class="search-result-list search-result-list-hidden">
-								<p class="result-header">Familles</p>
-								<p class="result-header">Genres</p>
-							  <p class="result-header">Espèces</p>
-                <p class="result-header">Nom commun</p>
-						</div>
-					</div>
+					</fieldset>
 				</section>
-				<section class="right-side">
-          <form id="addForm" onsubmit="return false">
-            <label for="famille">Famille</label>
-            <input name="famille" id="famille" type="text" />
-            <label for="genre">Genre</label>
-            <input name="genre" id="genre" type="text" />
-            <label for="espece">Espèce</label>
-            <input name="espece" id="espece" type="text" />
-            <label for="nom">Nom</label>
-            <input name="nom" id="nom" type="text" />
-            <input id="planteSubmit" type="submit" value="Ajouter la plante" />
-          </form>          
-        </section>
 			</div>
 		</main>
 	</body>
