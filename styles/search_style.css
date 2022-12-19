@@ -58,7 +58,7 @@ main {
 .search-result-list {
 	padding: 7px;
 	display: grid;
-	grid-template-columns: max-content max-content max-content;
+	grid-template-columns: max-content max-content max-content max-content;
 	grid-auto-rows: max-content;
 }
 .search-result-list-hidden {
