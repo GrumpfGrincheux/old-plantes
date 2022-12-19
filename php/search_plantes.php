@@ -13,7 +13,6 @@ if (mb_strlen($post) == 4) {
 }
 
 $order = $_POST["order"];
-
 if ($order == "all") {
   $clause = "WHERE familles.name LIKE \"$post%\" 
               OR genres.name LIKE \"$post%\" 
