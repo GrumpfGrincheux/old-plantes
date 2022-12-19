@@ -73,9 +73,6 @@ function getResultData() {
 					counter++;
 				});
 				document.getElementById("results-grid").innerHTML = html;
-				console.log(familles);
-				console.log(genres);
-				console.log(especes);
 			}
 		};
 		xhr.send(send);

@@ -91,18 +91,3 @@ main {
 	padding: 0;
 	border: #000000 solid 1px;
 }
-
-/*      AJOUTER UNE PLANTE      */
-
-#addForm {
-	display: grid;
-	padding: 5px;
-	grid-template-columns: repeat(2, max-content);
-	grid-template-rows: repeat(5, max-content);
-}
-#addForm input {
-	margin: 5px;
-}
-#planteSubmit {
-	grid-column: span 2;
-}

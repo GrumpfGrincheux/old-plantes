@@ -29,6 +29,7 @@ $result = $mysqli->query("SELECT DISTINCT familles.name AS famille, genres.name 
                           FROM especes
                           INNER JOIN familles ON especes.famille_id = familles.id
                           INNER JOIN genres ON especes.genre_id = genres.id
+                          $clause
                           ORDER BY famille, genre, espece;");
 
 $arr = [];

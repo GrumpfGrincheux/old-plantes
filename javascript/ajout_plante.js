@@ -1,17 +1,17 @@
-const planteSubmitButton = document.getElementById("planteSubmit");
-planteSubmitButton.addEventListener("click", function (e) {
-	e.preventDefault();
-	const planteForm = document.getElementById("planteForm");
-	const data = new FormData(planteForm);
+const addForm = document.getElementById("addForm");
+addForm.addEventListener("input", addPlant);
+
+function addPlant() {
+	const send = new FormData(addForm);
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/pages/plantes/php/ajout_plante.php", true);
 	xhr.onload = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			console.log(xhr.responseText);
-			getInputs("nom", "genre", "espece", "famille");
-		} else if (xhr.readyState === 4) {
-			console.log("Error occured");
+		}
+		if (xhr.readyState === 4) {
+			console.log("error");
 		}
 	};
-	xhr.send(data);
-});
+	xhr.send(send);
+}
