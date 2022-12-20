@@ -14,15 +14,20 @@ const addEsp = document.getElementById("add-espece");
 const addGen = document.getElementById("add-genre");
 const addFam = document.getElementById("add-famille");
 
-function showForm(form) {
-	if (!form.classList.contains("add-form-visible")) {
-		form.classList.add("add-form-visible");
-	} else {
-		form.classList.remove("add-form-visible");
+function showForm(formID) {
+	const nextForm = document.getElementById(formID).nextElementSibling;
+	if (nextForm != null) {
+		if (!nextForm.classList.contains("add-form-visible")) {
+			nextForm.classList.add("add-form-visible");
+		} else {
+			nextForm.classList.remove("add-form-visible");
+		}
 	}
 }
 
-setTimeout(showForm, 300, addFam);
+setTimeout(() => {
+	document.getElementById("add-famille").classList.add("add-form-visible");
+}, 200);
 
 let globalSuggestionIncrement = 1;
 
@@ -94,13 +99,25 @@ function onClickAutoComplete(suggestionID, inputID) {
 	});
 }
 
-function onSubmitMessage(textInputID, formID) {
+function onSubmitMessage(textInputID, formID, suggID) {
 	const input = document.getElementById(textInputID);
-	if ((input.value = !null || undefined)) {
-		const form = document.getElementById(formID);
+	const form = document.getElementById(formID);
+	const sugg = document.getElementById(suggID);
+	if (input.value != "" || null || undefined) {
 		form.classList.remove("add-form");
-		form.classList.add("");
-		form.innerHTML = `<div class="choice"><p>${input.id} :</p>
-  <p id="${input.id}-choice">${input.value}</p></div>`;
+		form.innerHTML = `
+      <div class="choice"><p>${input.id} :</p>
+      <p id="${input.id}-choice">${input.value}</p></div>`;
+		const nextForm = document.getElementById(formID).nextElementSibling;
+		if (nextForm != null) {
+			if (!nextForm.classList.contains("add-form-visible")) {
+				nextForm.classList.add("add-form-visible");
+			} else {
+				nextForm.classList.remove("add-form-visible");
+			}
+		}
+	} else {
+		sugg.classList.add("suggestions-visible");
+		sugg.innerHTML = `<div class="on-submit-error-message"><p>ERREUR : Ce champ ne peut pas être vide !</p></div>`;
 	}
 }
