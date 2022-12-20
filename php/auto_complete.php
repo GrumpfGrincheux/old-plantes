@@ -38,7 +38,8 @@ if (count($post) == 3) {
           WHERE especes.name LIKE \"$esp%\"
           AND familles.name = \"$fam\"
           AND genres.name = \"$gen\"
-          ORDER BY especes.name";
+          ORDER BY especes.name
+          LIMIT 10";
 }
 
 $mysqli = new mysqli("localhost", "root", "root", 'plantes');

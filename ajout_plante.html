@@ -33,64 +33,80 @@
 					<fieldset>
 						<legend>Sélectionner ou ajouter</legend>
 						<div class="forms-container">
-							<form
-								oninput="autoComplete(addFam)"
-								id="add-famille"
-								class="add-form"
-								onsubmit="showForm(addGen); return false"
-							>
-								<label for="famille">Famille</label>
-								<input
-									class="text-input"
-									name="famille"
-									id="famille"
-									type="text"
-								/>
-								<input
-									class="submit-button"
-									id="famille-submit"
-									type="submit"
-									value="Soumettre"
-								/>
-							</form>
-							<div id="famille-suggest"></div>
-							<form
-								oninput="autoComplete(addFam, addGen)"
-								id="add-genre"
-								class="add-form"
-								onsubmit="showForm(addEsp); return false"
-							>
-								<label for="genre">Genre</label>
-								<input class="text-input" name="genre" id="genre" type="text" />
-								<input
-									class="submit-button"
-									id="genre-submit"
-									type="submit"
-									value="Soumettre"
-								/>
-							</form>
-							<div id="genre-suggest"></div>
-							<form
-								oninput="autoComplete(addFam, addGen, addEsp)"
-								id="add-espece"
-								class="add-form"
-								onsubmit="return false"
-							>
-								<label for="espece">Espèce</label>
-								<input
-									class="text-input text-input-espece"
-									name="espece"
-									id="espece"
-									type="text"
-								/>
-								<input
-									class="submit-button"
-									id="espece-submit"
-									type="submit"
-									value="Soumettre"
-								/>
-							</form>
-							<div id="espece-suggest"></div>
+							<div class="form-block">
+								<form
+									autocomplete="off"
+									oninput="autoComplete(addFam)"
+									id="add-famille"
+									class="add-form"
+									onsubmit="showForm(addGen); onSubmitMessage('famille', 'add-famille'); return false"
+								>
+									<label for="famille">Famille</label>
+									<input
+										class="text-input"
+										name="famille"
+										id="famille"
+										type="text"
+										placeholder="Ex : Labacacées"
+									/>
+									<input
+										class="submit-button"
+										id="famille-submit"
+										type="submit"
+										value="Soumettre"
+									/>
+									<div class="suggestions" id="famille-suggestions"></div>
+								</form>
+							</div>
+
+							<div class="form-block">
+								<form
+									autocomplete="off"
+									oninput="autoComplete(addFam, addGen)"
+									id="add-genre"
+									class="add-form"
+									onsubmit="showForm(addEsp); onSubmitMessage('genre', 'add-genre'); return false"
+								>
+									<label for="genre">Genre</label>
+									<input
+										class="text-input"
+										name="genre"
+										id="genre"
+										type="text"
+									/>
+									<input
+										class="submit-button"
+										id="genre-submit"
+										type="submit"
+										value="Soumettre"
+									/>
+									<div class="suggestions" id="genre-suggestions"></div>
+								</form>
+							</div>
+							<div class="form-block">
+								<form
+									autocomplete="off"
+									oninput="autoComplete(addFam, addGen, addEsp)"
+									id="add-espece"
+									class="add-form"
+									onsubmit="onSubmitMessage('espece', 'add-espece'); return false"
+								>
+									<label for="espece">Espèce</label>
+									<input
+										class="text-input text-input-espece"
+										name="espece"
+										id="espece"
+										type="text"
+									/>
+									<input
+										class="submit-button"
+										id="espece-submit"
+										type="submit"
+										value="Soumettre"
+									/>
+									<div class="suggestions" id="espece-suggestions"></div>
+								</form>
+							</div>
 						</div>
 					</fieldset>
 				</section>
@@ -98,3 +114,6 @@
 		</main>
 	</body>
 </html>
+
+<p></p>
+<p id=""></p>

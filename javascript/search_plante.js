@@ -23,38 +23,29 @@ function getResultData() {
 				let backGroundColors = [
 					"result-bg-color-light",
 					"result-bg-color-dark",
-					"result-bg-color-light",
-					"result-bg-color-dark",
-					"result-bg-color-light",
-					"result-bg-color-dark",
-					"result-bg-color-light",
-					"result-bg-color-dark",
-					"result-bg-color-light",
-					"result-bg-color-dark",
-					"result-bg-color-light",
-					"result-bg-color-dark",
-					"result-bg-color-light",
-					"result-bg-color-dark",
-					"result-bg-color-light",
 				];
 				let bgIndex = 1;
 				let counter = 0;
 				jsonObject.forEach((element) => {
+					if (!genres.includes(element.genre)) {
+						if (bgIndex == 0) {
+							++bgIndex;
+						} else {
+							bgIndex--;
+						}
+						genres.push(element.genre);
+						html += `<p class="result ${
+							backGroundColors[bgIndex]
+						}" style="grid-row: ${counter + 2}; grid-column: 2;">${
+							element.genre
+						}</p>`;
+					}
 					if (!familles.includes(element.famille)) {
 						familles.push(element.famille);
 						html += `<p class="result ${
 							backGroundColors[bgIndex - 1]
 						}" style="grid-row: ${counter + 2}; grid-column: 1;">${
 							element.famille
-						}</p>`;
-					}
-					if (!genres.includes(element.genre)) {
-						++bgIndex;
-						genres.push(element.genre);
-						html += `<p class="result ${
-							backGroundColors[bgIndex]
-						}" style="grid-row: ${counter + 2}; grid-column: 2;">${
-							element.genre
 						}</p>`;
 					}
 					if (!especes.includes(element.espece)) {
