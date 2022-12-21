@@ -47,6 +47,8 @@
 									id="famille"
 									type="text"
 									placeholder="Ex : Labacacées"
+									onkeydown="filterInputs('famille')"
+									onkeyup="filterInputs('famille')"
 								/>
 								<input
 									class="submit-button"
@@ -64,7 +66,15 @@
 								onsubmit="onSubmitMessage('genre', 'add-genre', 'genre-suggestions'); return false"
 							>
 								<label for="genre">Genre</label>
-								<input class="text-input" name="genre" id="genre" type="text" />
+
+								<input
+									class="text-input"
+									name="genre"
+									id="genre"
+									type="text"
+									onkeydown="filterInputs('genre')"
+									onkeyup="filterInputs('genre')"
+								/>
 								<input
 									class="submit-button"
 									id="genre-submit"
@@ -86,6 +96,8 @@
 									name="espece"
 									id="espece"
 									type="text"
+									onkeydown="filterInputs('espece')"
+									onkeyup="filterInputs('espece')"
 								/>
 								<input
 									class="submit-button"

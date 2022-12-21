@@ -43,7 +43,7 @@ function getResultData() {
 					if (!familles.includes(element.famille)) {
 						familles.push(element.famille);
 						html += `<p class="result ${
-							backGroundColors[bgIndex - 1]
+							backGroundColors[bgIndex]
 						}" style="grid-row: ${counter + 2}; grid-column: 1;">${
 							element.famille
 						}</p>`;
