@@ -5,13 +5,13 @@ main {
 .main-content {
 	margin-top: 150px;
 	width: 100%;
-	display: grid;
-	grid-template-columns: 50% 50%;
+	display: flex;
 }
 .left-side {
 	margin: 0;
 	padding: 5px;
 	border: #000000 solid 1px;
+	min-width: 500px;
 }
 .forms-container {
 	display: flex;

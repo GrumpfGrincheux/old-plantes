@@ -166,7 +166,7 @@ function onClickAutoComplete(suggestionID, inputID) {
 }
 
 const securityRegex = /[^a-zA-Z é]/g;
-const familleRegex = /[a-z]+acées$/g;
+const familleRegex = /^[A-Z]{1}[a-z]+acées$/g;
 const genreRegex = /^[A-Z]{1}[a-z]+$/g;
 const especeRegex = /^[A-Z]{1}[a-z]+[ ]{1}[a-z]+$/g;
 

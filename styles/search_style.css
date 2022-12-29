@@ -5,13 +5,13 @@ main {
 .main-content {
 	margin-top: 100px;
 	width: 100%;
-	display: grid;
-	grid-template-columns: 50% 50%;
+	display: flex;
 }
 .left-side {
 	margin: 0;
 	padding: 5px;
 	border: #000000 solid 1px;
+	min-width: 500px;
 }
 #form-and-results {
 	margin: 0;
@@ -74,7 +74,7 @@ main {
 	color: #000000;
 	font-style: normal;
 	border-left: 1px #d3d3d3 solid;
-
+	padding: 5px;
 	padding-bottom: 10px;
 }
 .result-espece {
